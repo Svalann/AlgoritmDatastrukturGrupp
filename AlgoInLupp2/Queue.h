@@ -10,9 +10,11 @@ private:
 	vector <classtype> queueList;
 public:
 	Queue();
-	void AddToQueue();
-	classtype GetFirstInQueue();
+	void AddItemToQueue(classtype item);
+	classtype GetItemFirstInQueue();
 	int GetNumberOfItemsInQueue();
 	~Queue();
 };
+
+
 
