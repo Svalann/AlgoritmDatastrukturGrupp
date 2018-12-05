@@ -14,18 +14,12 @@ using namespace std;
 
 void TestQueue()
 {
-	Queue<string> test;
-	test.AddItemToQueue("10");
-	test.AddItemToQueue("3");
-	int l = test.GetNumberOfItemsInQueue();
-	cout << l << endl;
-	string s = test.GetItemFirstInQueue();
-	cout << s << endl;
-	s = test.GetItemFirstInQueue();
-	cout << s << endl;
-	s = test.GetItemFirstInQueue();
-	l = test.GetNumberOfItemsInQueue();
-	cout << l << endl;
+	Queue<int> test;
+	test.AddItemToQueue(2);
+	test.AddItemToQueue(1);
+	test.AddItemToQueue(16);
+	test.GetItemFirstInQueue();
+	cout << test.GetNumberOfItemsInQueue();
 }
 
 int main()
