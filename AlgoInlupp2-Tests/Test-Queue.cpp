@@ -1,9 +1,8 @@
-#include "pch.h"
 #include "gtest/gtest.h"
 #include "..\AlgoInLupp2\Queue.h"
-#include "..\AlgoInLupp2\Queue.cpp"
 
-class QueueFixture : public testing::Test {
+class QueueFixture : public testing::Test 
+{
 public:
 	class TestClass
 	{
@@ -26,6 +25,7 @@ public:
 		intQueue.AddItemToQueue(-18);
 		intQueue.AddItemToQueue(0);
 	}
+
 	void SetUpString()
 	{
 		stringQueue.AddItemToQueue("First");
@@ -33,6 +33,7 @@ public:
 		stringQueue.AddItemToQueue("Test");
 		stringQueue.AddItemToQueue("Test2");
 	}
+
 	void SetUpFloat()
 	{
 		floatQueue.AddItemToQueue(1.0);
@@ -40,6 +41,7 @@ public:
 		floatQueue.AddItemToQueue(0.199);
 		floatQueue.AddItemToQueue(3.14);
 	}
+
 	void SetUpClass()
 	{
 		TestClass nr1, nr2, nr3, nr4;
@@ -48,13 +50,14 @@ public:
 		classQueue.AddItemToQueue(nr3);
 		classQueue.AddItemToQueue(nr4);
 	}
+
 };
 
 
 
 TEST_F(QueueFixture, QueueCanHandleInts)
 {
-	SetUpInt();	
+	SetUpInt();
 	EXPECT_EQ(4, intQueue.GetNumberOfItemsInQueue());
 }
 TEST_F(QueueFixture, QueueCanHandleStrings)
@@ -120,7 +123,7 @@ TEST_F(QueueFixture, WhenAddingItemItShouldGet_ITEM_ADDED_TO_QUEUE)
 }
 
 TEST_F(QueueFixture, IfQueueIsFullWhenAddingShouldReturn_ITEM_FAILED_TO_ADD)
-{	
+{
 	Queue <string> stringQueue(1);
 	stringQueue.AddItemToQueue("Test");
 	EXPECT_EQ(ITEM_FAILED_TO_ADD, stringQueue.AddItemToQueue("Test2"));
