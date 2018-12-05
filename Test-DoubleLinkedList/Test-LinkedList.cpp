@@ -1,6 +1,8 @@
+#include "pch.h"
 #include "gtest/gtest.h"
+#include "..\AlgoInLupp2\LinkedList.h"
 
-TEST(TestCaseName, TestName) {
+TEST(TestLinked, TestName) {
   EXPECT_EQ(1, 1);
   EXPECT_TRUE(true);
 }
