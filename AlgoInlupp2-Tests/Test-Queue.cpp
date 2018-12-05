@@ -54,7 +54,7 @@ public:
 
 TEST_F(QueueFixture, QueueCanHandleInts)
 {
-	SetUpInt();	
+	SetUpInt();
 	EXPECT_EQ(4, intQueue.GetNumberOfItemsInQueue());
 }
 TEST_F(QueueFixture, QueueCanHandleStrings)
@@ -120,7 +120,7 @@ TEST_F(QueueFixture, WhenAddingItemItShouldGet_ITEM_ADDED_TO_QUEUE)
 }
 
 TEST_F(QueueFixture, IfQueueIsFullWhenAddingShouldReturn_ITEM_FAILED_TO_ADD)
-{	
+{
 	Queue <string> stringQueue(1);
 	stringQueue.AddItemToQueue("Test");
 	EXPECT_EQ(ITEM_FAILED_TO_ADD, stringQueue.AddItemToQueue("Test2"));
