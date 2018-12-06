@@ -12,6 +12,7 @@ class Binode
   public:
         Binode() : _prev(NULL), _next(NULL) {};
         Binode(const Binode& _in) : _key(_in._key), _prev(NULL), _next(NULL) {};
+        Binode(T e) : _key(e), _prev(NULL), _next(NULL) {};
 
    
 };
