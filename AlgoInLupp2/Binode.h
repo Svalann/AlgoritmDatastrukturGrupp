@@ -5,5 +5,9 @@
 template<class T>
 class Binode
 {
+  private:
+        T _key;
+        Binode *_prev, *_next;
 
+   
 };
