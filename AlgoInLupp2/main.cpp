@@ -1,6 +1,7 @@
 #include <iostream>	
 #include <Windows.h>
 #include "Queue.h"
+#include "Queue.cpp"
 #include "Stack.h"
 #include "DoubleLinkedList.h"
 #include "LinkedList.h"

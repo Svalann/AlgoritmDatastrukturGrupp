@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "..\AlgoInLupp2\Queue.h"
+#include "..\AlgoInLupp2\Queue.cpp"
 
 class QueueFixture : public testing::Test 
 {
