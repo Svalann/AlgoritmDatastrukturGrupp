@@ -34,4 +34,21 @@ class DoubleLinkedList
         void bubblesort();
         void quicksort();
 	
+	void operator=(const DoubleLinkedList &);
+        bool operator>(const DoubleLinkedList &) const;
+        bool operator<(const DoubleLinkedList &) const;
+        bool operator==(const DoubleLinkedList &) const;
+        bool operator>=(const DoubleLinkedList &) const;
+        bool operator<=(const DoubleLinkedList &) const;
+        
+        template<class Ts>
+        friend std::ostream& operator<<(std::ostream&, const DoubleLinkedList<Ts> &);
+	   
+	
+    private:
+        void quicksort(int, int, Binode<T>*, Binode<T>*);
+        Binode<T>* quicksortDivide(int, int, Binode<T>*, Binode<T>*, int&);
+        
+};
+	
 	///continue
