@@ -9,7 +9,6 @@
 using namespace std; 
 
 
-
 int main(int argc, char **argv)
 {
     Stack<int> *stack = new Stack<int>();
@@ -36,6 +35,7 @@ int main(int argc, char **argv)
     cout << "Stack Float = " << stackFloat << endl;    
     
     stackFloat.pop();
+
     cout << "Stack Float = " << stackFloat << endl;  
     cout << "Stack Float size = " << stackFloat.size() << endl;
 
@@ -45,12 +45,4 @@ int main(int argc, char **argv)
 
     delete stack;
     return 0;
-}
-
-
-	while (true)
-	{
-		cout << endl;  system("pause");
-	}
-	return 0;
 }
