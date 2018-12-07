@@ -1,12 +1,23 @@
+
 #include "LinkedList.h"
+using namespace std;
 
-
-
-LinkedList::LinkedList()
+template <class classtype>
+LinkedList <classtype>::LinkedList()
 {
+    
+
 }
 
 
-LinkedList::~LinkedList()
+
+template <class classtype>
+int LinkedList <classtype>::CountLinkedList()
+{
+
+}
+
+template <class classtype>
+LinkedList <classtype>::~LinkedList()
 {
 }
