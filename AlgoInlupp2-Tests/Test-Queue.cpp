@@ -1,6 +1,5 @@
 #include "gtest/gtest.h"
 #include "..\AlgoInLupp2\Queue.h"
-#include "..\AlgoInLupp2\Queue.cpp"
 
 class QueueFixture : public testing::Test 
 {
@@ -116,11 +115,11 @@ TEST_F(QueueFixture, IfTwoItemsIsRetrievedFromQueueSizeShouldDecreaseTwo)
 	EXPECT_EQ(2, intQueue.GetNumberOfItemsInQueue());
 }
 
-TEST_F(QueueFixture, WhenAddingItemItShouldGet_ITEM_ADDED_TO_QUEUE)
+TEST_F(QueueFixture, WhenAddingItemItShouldGet_ITEM_SUCCESFULLY_ADDED)
 {
 	SetUpString();
 	ITEM test = stringQueue.AddItemToQueue("Test");
-	EXPECT_EQ(ITEM_ADDED_TO_QUEUE, test);
+	EXPECT_EQ(ITEM_SUCCESFULLY_ADDED, test);
 }
 
 TEST_F(QueueFixture, IfQueueIsFullWhenAddingShouldReturn_ITEM_FAILED_TO_ADD)

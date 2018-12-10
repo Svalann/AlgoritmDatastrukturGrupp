@@ -1,7 +1,6 @@
 #include <iostream>	
 #include <Windows.h>
 #include "Queue.h"
-#include "Queue.cpp"
 #include "Stack.h"
 #include "DoubleLinkedList.h"
 #include "LinkedList.h"
@@ -18,7 +17,7 @@ int main(int argc, char **argv)
     {
         stack->push(i);
     }
-    
+
     cout << "size of Stack integer = " << stack->size() << endl;
     cout << "Stack Float = " << *stack << endl;
     
