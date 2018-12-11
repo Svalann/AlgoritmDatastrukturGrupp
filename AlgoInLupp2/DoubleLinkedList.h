@@ -265,14 +265,14 @@ void DoubleLinkedList<T>::invert()
     Binode<T> *temp = NULL;
 
     if (current)
-        this->_last = this->_first:
+        this->_last = this->_first;
 
     while (current)
     {
         temp = current->getPrev();
         current->setPrev(current->getNext());
         current->setNext(temp);
-        current == current->getPrev();
+        current = current->getPrev();
     }
     
     if (temp)
