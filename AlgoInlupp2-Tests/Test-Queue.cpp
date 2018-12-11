@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "..\AlgoInLupp2\Queue.h"
 
-class QueueFixture : public testing::Test 
+class QueueFixture : public testing::Test
 {
 public:
 	class TestClass
@@ -50,10 +50,7 @@ public:
 		classQueue.AddItemToQueue(nr3);
 		classQueue.AddItemToQueue(nr4);
 	}
-
 };
-
-
 
 TEST_F(QueueFixture, QueueCanHandleInts)
 {
@@ -83,7 +80,6 @@ TEST_F(QueueFixture, IfOneItemIsAddedSizeOfQueueIsOneLarger)
 
 	EXPECT_EQ(5, intQueue.GetNumberOfItemsInQueue());
 }
-
 
 TEST_F(QueueFixture, IfItemIsAddedItsLastInQueue)
 {

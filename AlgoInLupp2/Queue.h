@@ -1,14 +1,6 @@
 #pragma once
-#include <vector>
+#include "DoubleLinkedList.h"
 using namespace std;
-
-
-typedef enum
-{
-	ITEM_SUCCESFULLY_ADDED,
-	ITEM_FAILED_TO_ADD
-}ITEM;
-
 
 typedef enum
 {
@@ -18,71 +10,71 @@ typedef enum
 	QUEUE_HAS_SPACE
 }QUEUE;
 
-template <class classtype>
+template <class itemType>
 class Queue
 {
 private:
-	vector <classtype> queueList;
-	int maxSizeOfQueue;
+	DoubleLinkedList <itemType> queueList;
+
 public:
 	Queue()
 	{
-		this->maxSizeOfQueue = 1000;
 	}
 
 	Queue(int maxSize)
 	{
-		this->maxSizeOfQueue = maxSize;
+		queueList.SetMaxSizeOfItemsInList(maxSize);
 	}
 
-	ITEM AddItemToQueue(classtype item)
+	ITEM AddItemToQueue(itemType item)
 	{
 		if (isQueueFull() == QUEUE_IS_FULL)
 			return ITEM_FAILED_TO_ADD;
-		queueList.push_back(item);
+		queueList.AddItemLast(item);
 		return ITEM_SUCCESFULLY_ADDED;
 	}
 
-	classtype GetItemFirstInQueue()
+	itemType GetItemFirstInQueue()
 	{
 		if (isQueueEmpty() == QUEUE_IS_EMPTY)
 			throw underflow_error("Queue is Empty");
-		classtype temp = queueList.front();
-		queueList.erase(queueList.begin());
+		itemType temp = queueList.GetFirstItem();
+		queueList.DeleteFirst();
 		return temp;
 	}
 
 	int GetNumberOfItemsInQueue()
 	{
-		return queueList.size();
+		return queueList.GetSizeOfList();
 	}
 
-	classtype PeekAtFirstItemInQueue()
-	{
-		return queueList.front();
-	}
+
 
 	QUEUE isQueueFull()
 	{
-		if (queueList.size() < maxSizeOfQueue)
-			return QUEUE_HAS_SPACE;
-		return QUEUE_IS_FULL;
+		if (queueList.isListFull())
+			return QUEUE_IS_FULL;
+		return QUEUE_HAS_SPACE;
 	}
 
 	QUEUE isQueueEmpty()
 	{
-		if (queueList.size() == 0)
+		if (queueList.isListEmpty())
 			return QUEUE_IS_EMPTY;
 		return QUEUE_IS_NOT_EMPTY;
 	}
 
-	classtype PeekAtLastItemInQueue()
+	itemType PeekAtFirstItemInQueue()
 	{
-		return queueList.back();
+		return queueList.GetFirstItem();
+	}
+
+	itemType PeekAtLastItemInQueue()
+	{
+		return queueList.GetLastItem();
 	}
 
 	~Queue()
 	{
 	}
-
 };
