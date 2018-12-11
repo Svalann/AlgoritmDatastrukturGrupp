@@ -242,6 +242,42 @@ void DoubleLinkedList<T>::change(T data, int index)
         }
     }
 }
+template<class T>
+void DoubleLinkedList<T>:clear()
+{
+    Binode<T> *pivot = this->_first;
+    Binode<T> *aux;
+    while (pivot)
+    {
+        aux = pivot;
+        pivot = pivot->getNext();
+        delete aux;
+    }
+    this->_first = NULL;
+    this->_last = NULL;
+    this->_size = 0;
+}
+
+template<class T>
+void DoubleLinkedList<T>::invert()
+{
+    Binode<T> *current = this->_first;
+    Binode<T> *temp = NULL;
+
+    if (current)
+        this->_last = this->_first:
+
+    while (current)
+    {
+        temp = current->getPrev();
+        current->setPrev(current->getNext());
+        current->setNext(temp);
+        current == current->getPrev();
+    }
+    
+    if (temp)
+        this->_first = temp->getPrev();
+}
 
 	
 	///continue
