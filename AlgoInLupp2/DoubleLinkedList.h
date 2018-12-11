@@ -222,11 +222,26 @@ template<class T>
 void DoubleLinkedList<T>::change(T data, int index)
 {
     if (this->empty())
-        throw "Empty';
-    else if (index < 1 || index > this->_size + §)
+        throw "Empty List';
+    else if (index < 1 || index > this->_size + 1)
         throw "Index out of bounds";
     else
     {
+	        
+        if (index == 1)
+            this->_first->setKey(data);
+        else if (index == this->_size)
+            this->_last->setKey(data);
+        else
+        {
+            Binode<T> *pivot = this->_first;
+            for (int i = 1; i < index; i++)
+                pivot = pivot->getNext();
+            
+            pivot->setKey(data);
+        }
+    }
+}
 
 	
 	///continue
