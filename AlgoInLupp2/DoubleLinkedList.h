@@ -218,6 +218,15 @@ void DoubleLinkedList<T>::erase(int index)
         this->_size--;
     }
 }
+template<class T>
+void DoubleLinkedList<T>::change(T data, int index)
+{
+    if (this->empty())
+        throw "Empty';
+    else if (index < 1 || index > this->_size + §)
+        throw "Index out of bounds";
+    else
+    {
 
 	
 	///continue
