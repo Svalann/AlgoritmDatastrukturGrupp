@@ -170,6 +170,55 @@ void DoubleLinkedList<T>::popFront()
 template<class T>
 void DoubleLinkedList<T>::popBack()
 {
+    if (!this->empty())
+    {
+        Binode<T> *aux = this->_last;
+        this->_last = aux->getPrev();
+        this->_last->setNext(NULL);
+        this->_size--;
+        delete aux;
+    }
+    else
+        throw "Empty list";
+}
+
+template<class T>
+void DoubleLinkedList<T>::erase(int index)
+{
+    if (empty())
+        throw "Empty list";
+    else if (index < 1 || index > this->_size + 1)
+        throw "Index out of bounds";
+    else
+    {
+        Binode<T> *aux;
+        if (index == 1)
+        {
+            aux = this->_first;
+            this->_first = aux->getNext();
+            this->_first->setPrev(NULL);
+        }
+        else if (index == this->_size)
+        {
+            aux = this->_last;
+            this->_last = aux->getPrev();
+            this->_last->setNext(NULL);
+        }
+        else
+        {
+            Binode<T> *pivot = this->_first;
+            for (int i = 1; i < index; i++)
+                pivot = pivot->getNext();
+            
+            aux = pivot;
+            aux->getNext()->setPrev(aux->getPrev());
+            aux->getPrev()->setNext(aux->getNext());
+        }
+        delete aux;
+        this->_size--;
+    }
+}
+
 	
 	///continue
 #endif
