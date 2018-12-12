@@ -1,29 +1,62 @@
-//#pragma once
-//class LinkedList
-//{
-//public:
-//	LinkedList();
-//	~LinkedList();
-//};
-
 #pragma once
-#include <vector>
-using namespace std;
 
+#include <iostream>
+#include <sstream>
+#include <assert.h>
 
-template <class classtype>
+template <typename T>
 class LinkedList
-{
-private:
-    vector <classtype> aLinkedList;
-public:
-    LinkedList();
-    int CountLinkedList();
-    //add to first
-    //insertvalfri
-    //get valfri på index
-    //deletepå
 
-    ~LinkedList();
+{
+
+private:
+    struct Node
+    {
+        T data;
+        Node *next;
+    };
+
+    Node *head;
+
+public:
+
+    LinkedList();
+
+    void AddFirst(T data);
+
+    void AddLast(T data);
+
+    void InsertPosition(T data, int index; // DFENNA FUNKAR EJ, LÖS DET
+
+    void RemovePosition(int index);
+
+    void Print();
+
+    T GetNode(int index);
+
+    int GetSize();
+ 
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
