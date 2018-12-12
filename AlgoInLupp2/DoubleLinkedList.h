@@ -278,6 +278,171 @@ void DoubleLinkedList<T>::invert()
     if (temp)
         this->_first = temp->getPrev();
 }
+template<class T>
+void DoubleLinkedList<T>::sort()
+{
+    if (this->_size <= 20)
+        this->bubblesort();
+    else
+        this->quicksort();
+}
+
+template<class T>
+void DoubleLinkedList<T>::bubblesort()
+{
+    if (!this->sorted())
+    {
+        for(int p = 0, n = _size; p < n - 1; p++)
+        {
+            Binode<T> *pivot = this->_first;
+            Binode<T> *next = pivot->getNext();
+            for (int j = 0; j < n - p - 1; j++)
+            {
+                if (pivot->getKey() > next->getKey())
+                    Binode<T>::swap(pivot, next);
+                
+                pivot = next;
+                next = next->getNext();
+            }
+        }
+    }
+}
+
+template<class T>
+void DoubleLinkedList<T>::quicksort()
+{
+    if (!this->sorted())
+    {
+        quicksort(1, _size, this->_first, this->_last);
+    }
+}
+
+template<class T>
+void DoubleLinkedList<T>::quicksort(int start, int end, Binode<T>* nStart, Binode<T>* nEnd)
+{
+    int pivot;
+    Binode<T> *nPivot = NULL;
+
+    if (start < end)
+    {
+        nPivot = quicksortDivide(start, end, nStart, nEnd, pivot);
+
+        // Recursive calls from here
+        quicksort(start, pivot - 1, nStart, nPivot->getPrev());
+
+        quicksort(pivot + 1, end, nPivot->getNext(), nEnd);
+    }
+}
+
+template<class T>
+Binode<T>* DoubleLinkedList<T>::quicksortDivide(int start, int end, Binode<T>* nStart, Binode<T>* nEnd, int& pivot)
+{
+    int left, right;
+    Binode<T> *nLeft, *nRight;
+
+    T ppivot = nStart->getKey();
+    left = start;
+    right = end;
+    nLeft = nStart;
+    nRight = nEnd;
+
+    while (left < right)
+    {
+        while (nRight->getKey() > ppivot)
+        {
+            nRight = nRight->getPrev();
+            right--;
+        }
+
+        while ((left < right) && (nLeft->getKey() <= ppivot))
+        {
+            nLeft = nLeft->getNext();
+            left++;
+        }
+
+        if (left < right)
+            Binode<T>::swap(nLeft, nRight);
+    }
+
+    Binode<T>::swap(nRight, nStart);
+
+    pivot = right;
+    return nRight;
+}
+
+template<class T>
+void DoubleLinkedList<T>::operator=(const DoubleLinkedList<T> &_in)
+{
+    if (this != &_in)
+    {
+        this->clear();
+        Binode<T> *_inIterator = _in._first;
+        Binode<T> *thisIterator = this->_first;
+        Binode<T> *newNode;
+        
+        for (int i = 1; i <= _in._size; i++, _inIterator = _inIterator->getNext())
+        {
+            newNode = new Binode<T>();
+            newNode->setKey(_inIterator->getKey());
+
+            if (i == 1)
+            {
+                this->_first = newNode;
+                thisIterator = newNode;
+            }
+            else
+            {
+                thisIterator->setNext(newNode);
+                newNode->setPrev(thisIterator);
+                thisIterator = thisIterator->getNext();
+            }
+        }
+        this->_last = newNode;
+        this->_size = _in._size;
+    }
+}
+
+template<class T>
+bool DoubleLinkedList<T>::operator>(const DoubleLinkedList<T> &_in) const
+{
+    if (this != &_in)
+        return (this->_size > _in._size);
+
+    return false;
+}
+
+template<class T>
+bool DoubleLinkedList<T>::operator<(const DoubleLinkedList<T> &_in) const
+{
+    return !(*this > _in);
+}
+
+template<class T>
+bool DoubleLinkedList<T>::operator==(const DoubleLinkedList<T> &_in) const
+{
+    if (this != &_in)
+    {
+        if (this->_size == _in._size)
+        {
+            Binode<T> *thisIterator = this->_first;
+            Binode<T> *vPivot = _in._first;
+            bool isEqual;
+            int i = 1;
+
+            do
+            {
+                isEqual = (thisIterator->getKey() == vPivot->getKey());
+                i++;
+                thisIterator = thisIterator->getNext();
+                vPivot = vPivot->getNext();
+            } while(i <= this->_size && isEqual);
+
+            return isEqual;
+        }
+
+        return false;
+    }
+
 
 	
 	///continue
