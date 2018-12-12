@@ -49,3 +49,10 @@ DoubleLinkedList<T>::DoubleLinkedList(const DoubleLinkedList &_in)
     }
     this->_last = add;
 }
+
+template<class T>
+void DoubleLinkedList<T>::InsertAtPosition(int index, T data)
+{
+    if (index < 1 || index > this->_size + 2)
+        throw "Index Invalid";
+    else
