@@ -28,7 +28,7 @@ public:
 
     void AddLast(T data);
 
-    void InsertPosition(T data, int index; // DFENNA FUNKAR EJ, LÖS DET
+    void InsertPosition(T data, int index); // DFENNA FUNKAR EJ, LÖS DET
 
     void RemovePosition(int index);
 
