@@ -3,6 +3,8 @@
 #include <iostream>
 #include <sstream>
 #include <assert.h>
+#include <exception>
+
 
 template <typename T>
 class LinkedList
@@ -143,7 +145,7 @@ void LinkedList <T>::Print()
 }
 
 template <class T>
-T LinkedList <T>::GetNode(int index)
+T LinkedList <T>::GetNode(int index)// använd när du testar addfirst 
 
 {
     Node *current = head;
@@ -155,7 +157,7 @@ T LinkedList <T>::GetNode(int index)
         count++;
         current = current->next;
     }
-    assert(0);
+    assert(0); //throw - exception underflow/overflow range - hantera när det ej finns ej nod på deindexet 
 }
 
 template <class T>
