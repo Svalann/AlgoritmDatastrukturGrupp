@@ -1,10 +1,10 @@
 #ifndef _STACK_H
 #define _STACK_H
-#pragma once
 #include <iostream>
 #include <fstream>
 #include <string>
 #include "Node.h"
+
 using namespace std;
 
 template <class T>
@@ -23,14 +23,8 @@ class Stack
         bool empty() const { return this->_size == 0; };
         void push(T);
         void pop();
-        void invert();
         T top() const { return this->_top->getKey(); };
         void clear();
-
-        void loadFile(string);
-
-        template<class Ts>
-        friend std::ostream& operator<<(std::ostream&, const Stack<Ts> &);
     
 };
 
@@ -75,21 +69,6 @@ void Stack<T>::pop()
 }
 
 template <class T>
-void Stack<T>::invert()
-{
-    T data;
-    Stack<T> *aux = new Stack<T>();
-        while(!this->empty())
-        {
-            data = this->top();
-            this->pop();
-            aux->push(data);
-        }
-    this->_top = aux->_top;
-    this->_size = aux->_size;
-}
-
-template <class T>
 void Stack<T>::clear()
 {
     if(!this->empty())
@@ -97,30 +76,5 @@ void Stack<T>::clear()
             this->pop();
 }
 
-template<class T>
-std::ostream& operator<<(std::ostream& out, const Stack<T> &Stack)
-{
-    Node<T> *Node;
-    Node = Stack._top;
-    out << "\n";
-    for (int i = 0; i < Stack._size; i++, Node = Node->getNext())
-        out << Node->getKey() << "\n";
-    return out;
-}
-
-template<typename T>
-void Stack<T>::loadFile(string file)
-{
-    T line;
-    ifstream in;
-    in.open(file.c_str());
- 
-    if (!in.is_open())
-        cout << "can´t not open file : " << file << endl;
-    else
-        while (in >> line)
-            this->push(line);
-    in.close();
-}
-
 #endif
+
