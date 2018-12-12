@@ -442,6 +442,9 @@ bool DoubleLinkedList<T>::operator==(const DoubleLinkedList<T> &_in) const
 
         return false;
     }
+    return true;
+}
+
 
 
 	
