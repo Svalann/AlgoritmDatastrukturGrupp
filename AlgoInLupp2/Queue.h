@@ -2,7 +2,6 @@
 #include <vector>
 using namespace std;
 
-
 typedef enum
 {
 	ITEM_SUCCESFULLY_ADDED,
