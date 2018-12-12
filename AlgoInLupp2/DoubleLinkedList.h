@@ -23,3 +23,29 @@ class DoubleLinkedList
         
         
 };
+
+template<class T>
+DoubleLinkedList<T>::DoubleLinkedList(const DoubleLinkedList &_in)
+{
+    Binode<T> *_inIterator =_in._first;
+    Binode<T> *prevIterator = NULL;
+    Binode<T> *add = NULL;
+    this->_first = NULL;
+    this->_size =_in._size;
+
+    while(_inIterator)
+    {
+        add = new Binode<T>(_inIterator->getKey());
+        if (this->_first)
+        {
+            add->setPrev(prevIterator);
+            prevIterator->setNext(add);
+        }
+        else
+            this->_first = add;
+
+        prevIterator = add;
+        _inIterator = _inIterator->getNext();
+    }
+    this->_last = add;
+}
