@@ -11,7 +11,7 @@ class LinkedList
 
 {
 
-private:
+public:
     struct Node
     {
         T data;
@@ -20,7 +20,6 @@ private:
 
     Node *head;
 
-public:
 
     LinkedList();
 
@@ -40,6 +39,13 @@ public:
  
 };
 
+
+template <class T>
+LinkedList <T>::LinkedList()
+
+{
+    this->head = nullptr;
+}
 
 template <class T>
 void LinkedList <T>::AddFirst(T data)
@@ -164,7 +170,7 @@ template <class T>
 int LinkedList <T>::GetSize()
 
 {
-    int count{};
+    int count = 0;
     Node *temp = head;
     while (temp != nullptr)
     {
