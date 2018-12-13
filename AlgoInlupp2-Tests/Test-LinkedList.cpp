@@ -20,7 +20,7 @@ TEST(TestLinked, testingRemove) {
 	EXPECT_EQ(1, theList.GetSize());
 }
 
-TEST(TestLinked, testingGetNode) {
+TEST(TestLinked, testingGetNodes) {
 
 	LinkedList<int> theList;
 	theList.AddFirst(1);
