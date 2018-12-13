@@ -43,26 +43,3 @@ TEST(TestLinked, testingAddLast) {
 	EXPECT_EQ(10, theList.GetNode(3));
 }
 
-//TEST(TestLinked, testingInsert) {
-//
-//	LinkedList<int> theList;
-//	theList.AddFirst(1);
-//	theList.AddLast(3);
-//	theList.InsertPosition(2, 1);
-//
-//	EXPECT_EQ(2, theList.GetNode(1));
-//}
-
-
-
-
-//expect throw
-
-
-//TEST(TestLinked, TestGetSize) {
-//
-//
-//    LinkedList<int> theList;
-//    theList.AddFirst(1);
-//    EXPECT_EQ(1, theList.GetSize());
-//}//expect throw
