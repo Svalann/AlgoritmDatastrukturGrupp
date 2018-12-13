@@ -94,3 +94,80 @@ void DoubleLinkedList<T>::InsertAtPosition(int index, T data)
     }
 }
 
+template<class T>
+void DoubleLinkedList<T>::RemoveAtPosition(int index)
+{
+    if (Empty())
+        throw "Empty list";
+    else if (index < 1 || index > this->_size + 1)
+        throw "Index out of bounds";
+    else
+    {
+        Binode<T> *aux;
+        if (index == 1)
+        {
+            aux = this->_first;
+            this->_first = aux->getNext();
+            this->_first->setPrev(NULL);
+        }
+        else if (index == this->_size)
+        {
+            aux = this->_last;
+            this->_last = aux->getPrev();
+            this->_last->setNext(NULL);
+        }
+        else
+        {
+            Binode<T> *pivot = this->_first;
+            for (int i = 1; i < index; i++)
+                pivot = pivot->getNext();
+            
+            aux = pivot;
+            aux->getNext()->setPrev(aux->getPrev());
+            aux->getPrev()->setNext(aux->getNext());
+        }
+        delete aux;
+        this->_size--;
+    }
+}
+
+template<class T>
+T DoubleLinkedList<T>::GetAtPosition(int pos)
+{
+    if (pos < 1 || pos > this->_size + 1)
+        throw "Index Invalid";
+    else
+    {
+        if (pos == 1)
+            return _first->getKey();
+        else if (pos == this->_size)
+            return _last->getKey();
+        else
+        {
+            Binode<T> *current = _first;
+            for (int i = 1; i < pos; i++)
+                current = current->getNext();
+            return current->getKey();
+        }
+    }
+}
+
+template<class T>
+void DoubleLinkedList<T>::Clear()
+{
+    Binode<T> *pivot = this->_first;
+    Binode<T> *aux;
+    while (pivot)
+    {
+        aux = pivot;
+        pivot = pivot->getNext();
+        delete aux;
+    }
+    this->_first = NULL;
+    this->_last = NULL;
+    this->_size = 0;
+}
+
+#endif
+
+
