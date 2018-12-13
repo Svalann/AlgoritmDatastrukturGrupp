@@ -56,3 +56,41 @@ void DoubleLinkedList<T>::InsertAtPosition(int index, T data)
     if (index < 1 || index > this->_size + 2)
         throw "Index Invalid";
     else
+    {
+        Binode<T> *newNode, *current, *next;
+        newNode = new Binode<T>(data);
+        
+        if (this->Empty())
+        {
+            this->_first = newNode;
+            this->_last = newNode;
+        }
+        else if (index == 1)
+        {
+            newNode->setNext(this->_first);
+            this->_first->setPrev(newNode);
+            this->_first = newNode;
+        }
+        else if (index == this->GetSize() + 1)
+        {
+            this->_last->setNext(newNode);
+            newNode->setPrev(this->_last);
+            this->_last = newNode;
+        }
+        else
+        {
+            current = this->_first;
+            next = current->getNext();
+            for (int i = 2; i < index; i++)
+            {
+                current = next;
+                next = next->getNext();
+            }
+            current->setNext(newNode);
+            newNode->setPrev(current);
+            newNode->setNext(next);
+        }
+        this->_size++;
+    }
+}
+
