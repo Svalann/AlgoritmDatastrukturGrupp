@@ -23,3 +23,15 @@ class Binode
         Binode *getNext() const { return _next; };
 
         static void swap(Binode *, Binode *);
+    };
+
+template<class T>
+void Binode<T>::swap(Binode *a, Binode *b)
+{
+    T aux = a->_key;
+    a->_key = b->_key;
+    b->_key = aux;
+}
+
+#endif
+
